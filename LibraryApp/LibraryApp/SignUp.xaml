@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:LibraryApp.CustomRenderer"
+    xmlns:vm="clr-namespace:LibraryApp.ViewModel"
+    x:Class="LibraryApp.SignUp">
+    <ContentPage.BindingContext>
+    <vm:SignUpClass x:Name="vm">
+    </vm:SignUpClass>
+
+</ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <StackLayout Grid.Row = "0">
+                <Image Source="tlo.png" HeightRequest="200" Aspect="AspectFill"></Image>
+            </StackLayout>
+            <StackLayout Margin="10, 110, 15, 40">
+                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="450" HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="Center">
+                    <Label Text="Register" TextColor="Blue" FontSize="20" HorizontalTextAlignment="Center"></Label>
+                    <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
+                        <Entry HorizontalTextAlignment="Start" Placeholder="Name" TextColor="Red" Margin="20, 0, 0, 0" >
+                             <Entry.Effects>
+                                 <effects:BorderLessEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
+                        <Entry HorizontalTextAlignment="Start" Placeholder="Surname" TextColor="Red" Margin="20, 0, 0, 0" >
+                             <Entry.Effects>
+                                 <effects:BorderLessEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
+                        <Entry HorizontalTextAlignment="Start" Placeholder="Email" TextColor="Red" Margin="20, 0, 0, 0" >
+                             <Entry.Effects>
+                                 <effects:BorderLessEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
+                        <Entry HorizontalTextAlignment="Start" Placeholder="Password" TextColor="Red" Margin="20, 0, 0, 0" >
+                             <Entry.Effects>
+                                 <effects:BorderLessEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
+                        <Entry HorizontalTextAlignment="Start" Placeholder="Repeat Password" TextColor="Red" Margin="20, 0, 0, 0" >
+                             <Entry.Effects>
+                                 <effects:BorderLessEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Button x:Name="messageLabel" Text="Sign Up!" TextColor="White" BackgroundColor="MediumPurple" HeightRequest="60" WidthRequest="340"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+<StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+    <Label Text="Already have account?" HorizontalTextAlignment="Center"></Label>
+    <Label Text="Sign In!" TextColor="Magenta">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SignIn}">
+            </TapGestureRecognizer>
+        </Label.GestureRecognizers>
+ 
+
+    </Label>
+</StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
