@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pkutyl/Projects/LibraryApp/LibraryApp/LibraryApp/LibraryApp.csproj": {}
+    "C:\\Users\\micha\\OneDrive\\Pulpit\\libraxamarin\\LibraryMobile\\LibraryApp\\LibraryApp\\LibraryApp.csproj": {}
   },
   "projects": {
-    "/Users/pkutyl/Projects/LibraryApp/LibraryApp/LibraryApp/LibraryApp.csproj": {
+    "C:\\Users\\micha\\OneDrive\\Pulpit\\libraxamarin\\LibraryMobile\\LibraryApp\\LibraryApp\\LibraryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pkutyl/Projects/LibraryApp/LibraryApp/LibraryApp/LibraryApp.csproj",
+        "projectUniqueName": "C:\\Users\\micha\\OneDrive\\Pulpit\\libraxamarin\\LibraryMobile\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
         "projectName": "LibraryApp",
-        "projectPath": "/Users/pkutyl/Projects/LibraryApp/LibraryApp/LibraryApp/LibraryApp.csproj",
-        "packagesPath": "/Users/pkutyl/.nuget/packages/",
-        "outputPath": "/Users/pkutyl/Projects/LibraryApp/LibraryApp/LibraryApp/obj/",
+        "projectPath": "C:\\Users\\micha\\OneDrive\\Pulpit\\libraxamarin\\LibraryMobile\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
+        "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\micha\\OneDrive\\Pulpit\\libraxamarin\\LibraryMobile\\LibraryApp\\LibraryApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/pkutyl/.config/NuGet/NuGet.Config"
+          "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +45,20 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.25.2, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.60.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.60.0, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -59,11 +80,12 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/Users/pkutyl/Library/Caches/VisualStudio/17.0/MSBuild/2271_3/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

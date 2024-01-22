@@ -8,7 +8,7 @@ namespace LibraryApp.ViewModel
 	{
 		public string PropertySignUp { get; } = "Sign Up!";
         public ICommand goBack => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
-		public ICommand Login => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new WelcomePage()));
+		public ICommand Login => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new ListItems()));
 		public ICommand LabelTappedCommand => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SignUp()));
         public SignInClass()
 		{

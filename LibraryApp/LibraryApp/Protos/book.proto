@@ -1,0 +1,91 @@
+
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+option csharp_namespace = "LibraryGrpc";
+import "google/api/annotations.proto";
+
+package bookit;
+
+service BookIt
+{
+
+    // Read single
+    rpc ReadBook(ReadBookRequest) returns (ReadBookResponse) {
+        option (google.api.http) = {
+            get: "/v1/book/{Id}"
+        };
+    }
+
+    // Read list
+    rpc ListBook(GetAllBookRequest) returns (GetAllBookResponse) {
+        option (google.api.http) = {
+            get: "/v1/book"
+        };
+    }
+
+    // Update
+    rpc UpdateBook(UpdateBookRequest) returns (UpdateBookResponse) {
+        option (google.api.http) = {
+            put: "/v1/book",
+            body: "*"
+        };
+    }
+
+    // Update
+    rpc ReturnBook(ReturnBookRequest) returns (ReturnBookResponse) {
+        option (google.api.http) = {
+            put: "/v1/book/return",
+            body: "*"
+        };
+    }
+
+}
+
+
+message ReadBookRequest
+{
+    int32 Id = 1;
+}
+
+message ReadBookResponse
+{
+    int32 Id = 1;
+    string title = 2;
+    string author = 3;
+    string genre = 4;
+    float rating = 5;
+    bool availability = 6;
+    string description = 7;
+    int32 CurrentOwnerId  = 8;
+    
+}
+
+message GetAllBookRequest { }
+
+message GetAllBookResponse
+{
+    repeated ReadBookResponse book = 1;
+}
+
+message UpdateBookRequest
+{
+    int32 id = 1;
+    int32 CurrentOwnerId = 2;
+}
+
+message UpdateBookResponse
+{
+    int32 id = 1;
+}
+
+message ReturnBookRequest
+{
+    int32 id = 1;
+    int32 CurrentOwnerId = 2;
+}
+
+message ReturnBookResponse
+{
+    int32 id = 1;
+}
+    
