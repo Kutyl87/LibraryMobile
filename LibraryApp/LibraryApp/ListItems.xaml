@@ -38,7 +38,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="5">
-                            <Frame CornerRadius="10" HasShadow="True" BorderColor="MediumPurple" BackgroundColor="WhiteSmoke" Margin="5">
+                            <Frame CornerRadius="10" HasShadow="True" BorderColor="MediumPurple" BackgroundColor="White" Margin="5">
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="search.png" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"/>
                                 <Label VerticalOptions="Center" Text="{Binding .}" FontSize="Medium" TextColor="Black"></Label>

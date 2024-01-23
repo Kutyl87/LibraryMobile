@@ -26,7 +26,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid>
-                    <Frame CornerRadius="10" HasShadow="True" BackgroundColor="WhiteSmoke">
+                    <Frame CornerRadius="10" HasShadow="True" BackgroundColor="White">
                         <StackLayout Orientation="Horizontal">
                             <!--<StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnClicked}" CommandParameter="{Binding .}"></TapGestureRecognizer>

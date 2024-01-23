@@ -12,6 +12,11 @@ namespace LibraryApp
 			InitializeComponent ();
 			Title.Text = book.Title;
 			Author.Text = book.Author;
+			Img.Source = book.ImageUrl;
+			Description.Text = book.BookDescription;
+			Rating.Text = book.Rating.ToString();
+			Genre.Text = book.Genre;
+
 		}
 	}
 }

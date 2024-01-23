@@ -43,7 +43,7 @@ namespace LibraryApp.ViewModel
             };
 
         public ICommand OnTextChange { get; }
-        //public ICommand OnItemClicked { get; }
+        public ICommand GoToProfile => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new ProfilePage()));
         public ObservableCollection<Book> Books { get; set; }
         public ObservableCollection<Book> bookdisplayed { get; set; }
         private string searchText;
@@ -69,13 +69,13 @@ namespace LibraryApp.ViewModel
                 {
                     BookId = i + 1,
                     Title = BookTitles[i],
-                    Author = "Unknown",
+                    Author = "Adam Jan Czubak",
                     Genre = "Fiction",
-                    Rating = 0.0f,
+                    Rating = 4.7f,
                     Availability = true,
-                    BookDescription = "Description of the book.",
+                    BookDescription = "Description of the bookxx xxxxxodosfjsi  fjisaifijsifisjaifs  aifjasjifasifia  jiaifjiasi  jfaif  jis fs fsafffa fsf aa ff.",
                     CurrentOwnerId = null,
-                    ImageUrl = "ic_launcher.png"
+                    ImageUrl = "test2.png"
                 };
 
                 Books.Add(book);

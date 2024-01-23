@@ -2,12 +2,18 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="LibraryApp.BookPage">
+    xmlns:vm="clr-namespace:LibraryApp.ViewModel"
+    x:Class="LibraryApp.BookPage"
+    BackgroundColor="White">
+        <ContentPage.BindingContext>
+    <vm:BookClass x:Name="vm">
+    </vm:BookClass>
+</ContentPage.BindingContext>
     <ContentPage.Content>
  <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackLayout Grid.Row="0">
@@ -16,13 +22,19 @@
         </StackLayout>
         <StackLayout Grid.Row="1">
             <StackLayout HorizontalOptions="Center"  Orientation="Horizontal" Spacing="5">
-            <Label x:Name="Title" FontSize="30" TextColor="Blue" FontFamily="Cabin"></Label>
+            <Label x:Name="Title" FontSize="30" TextColor="Black" FontFamily="Cabin"></Label>   
             </StackLayout>
-            <Label x:Name="Author" FontSize="14" HorizontalOptions="Center" TextColor="DimGray" Margin="0 "></Label>
-         </StackLayout>
+            <Label x:Name="Genre" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14" TextColor="Black"  Padding="10,0,0,0"></Label> 
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="Author" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14" TextColor="Black" Padding="10, 0,0, 0"/>
+                <Label x:Name="Rating" HorizontalTextAlignment="End" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="Magenta" FontSize="14" Padding="0, 0,10, 0"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center"  Orientation="Horizontal" Spacing="5">
+            <Label x:Name="Description" TextColor="Black" FontFamily="Cabin" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+            </StackLayout>
          <StackLayout Grid.Row="2">
-         <Button Command="{Binding SignIn}" Text="Login" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="50" Margin="0, 0, 0, 10"   BorderColor="Purple" BorderWidth="1.3" TextColor="White" BackgroundColor="MediumPurple"></Button>
-         <Button Command="{Binding SignUp}" Text="Sign Up" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="50" Margin="0, 0, 0, 20" BorderColor="Purple" BorderWidth="1.3" TextColor="MediumPurple" BackgroundColor="White"></Button>
+         <Button Command="{Binding Order}" Text="Order" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="50" Margin="0, 0, 0, 10"   BorderColor="Purple" BorderWidth="1.3" TextColor="White" BackgroundColor="MediumPurple"></Button>
         </StackLayout>  
     </Grid>
     </ContentPage.Content>
