@@ -7,28 +7,18 @@ using LibraryGrpc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Grpc.Net.Client;
-
+using System.Net.Http;
+using Grpc.Net.Client.Web;
 namespace LibraryApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListItems : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
 
         public ListItems()
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-            MyListView.ItemsSource = Items;
         }
         /*static async Task Main()
         {
@@ -72,12 +62,17 @@ namespace LibraryApp
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var serverAddress = "localhost";
-            var serverPort = 7145;
-            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+            //        var serverAddress = "localhost";
+            //        var serverPort = 7145;
+            //        //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
             // Create a channel to the gRPC server
-            var channel = GrpcChannel.ForAddress($"https://10.0.2.2:7145");
+            var channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions
+                    {
+                HttpHandler = new GrpcWebHandler(new HttpClientHandler())
+                    });
+
+            var client = new Greeter.GreeterClient(channel);
             var greeterClient = new Greeter.GreeterClient(channel);
 
             // Create a request message
@@ -108,3 +103,8 @@ namespace LibraryApp
         }
     }
 }
+
+    //    void SearchBar_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+    //    {
+    //    }
+    //}
