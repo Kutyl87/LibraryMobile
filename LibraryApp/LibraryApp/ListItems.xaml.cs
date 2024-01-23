@@ -73,10 +73,16 @@ namespace LibraryApp
                     });
 
             var client = new Greeter.GreeterClient(channel);
+            var bookClient = new BookIt.BookItClient(channel);
             var greeterClient = new Greeter.GreeterClient(channel);
+            var authClient = new AuthIt.AuthItClient(channel);
+            var customerClient = new CustomerIt.CustomerItClient(channel);
 
             // Create a request message
             var request = new HelloRequest { Name = "John" };
+            var bookRequest = new ReadBookRequest { Id = 1 };
+            var authRequest = new LogInRequest { Email = "ffsfsfs@wp.pl", Password = "2222112.Wf" };
+            var customerRequest = new ReadCustomerRequest { Id = 1};
 
             var mes = "dd";
 
@@ -84,9 +90,16 @@ namespace LibraryApp
             {
                 // Call the SayHello method synchronously
 
-                var response = greeterClient.SayHello(request);
-                mes = $"Received greeting: {response.Message}";
-                Console.WriteLine($"Received greeting: {response.Message}");
+                /*                var response = bookClient.ReadBook(bookRequest);
+                                mes = $"Received greeting: {response.Genre}";
+                                Console.WriteLine($"Received greeting: {response}");*/
+                /*                var response = bookClient.ReadBook(bookRequest);
+                                mes = $"Received greeting: {response.Genre}";
+                                Console.WriteLine($"Received greeting: {response}");*/
+                /*var response = authClient.LogInUser(authRequest);*/
+                var response = customerClient.ReadCustomer(customerRequest);
+                mes = $"Received greeting: {response.Name}";
+                Console.WriteLine($"Received greeting: {response}");
             }
             catch (Exception ex)
             {

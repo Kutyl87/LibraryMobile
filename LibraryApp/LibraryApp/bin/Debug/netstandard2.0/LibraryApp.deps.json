@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "LibraryApp/1.0.0": {
         "dependencies": {
+          "Google.Api.CommonProtos": "2.13.0",
           "Google.Protobuf": "3.25.2",
           "Grpc.Net.Client": "2.60.0",
           "Grpc.Net.Client.Web": "2.60.0",
@@ -21,6 +22,17 @@
         },
         "runtime": {
           "LibraryApp.dll": {}
+        }
+      },
+      "Google.Api.CommonProtos/2.13.0": {
+        "dependencies": {
+          "Google.Protobuf": "3.25.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
+            "assemblyVersion": "2.13.0.0",
+            "fileVersion": "2.13.0.0"
+          }
         }
       },
       "Google.Protobuf/3.25.2": {
@@ -237,6 +249,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Google.Api.CommonProtos/2.13.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4QG32em/rqXKSUd2OmBTad38ps7Yt3tiN3M5qHmfbOgpL3rYnG86WxXaAy+bCn73ZyYPEjnO2uHJ9yYWWkPAcw==",
+      "path": "google.api.commonprotos/2.13.0",
+      "hashPath": "google.api.commonprotos.2.13.0.nupkg.sha512"
     },
     "Google.Protobuf/3.25.2": {
       "type": "package",

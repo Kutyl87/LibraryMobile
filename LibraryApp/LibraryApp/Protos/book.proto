@@ -16,6 +16,12 @@ service BookIt
         };
     }
 
+    rpc GetBookByTitle(GetBookByTitleRequest) returns (GetBookByTitleResponse) {
+        option (google.api.http) = {
+            get: "/v1/book/bookbytitle/{Id}"
+        };
+    }
+
     // Read list
     rpc ListBook(GetAllBookRequest) returns (GetAllBookResponse) {
         option (google.api.http) = {
@@ -39,6 +45,27 @@ service BookIt
         };
     }
 
+    // Categories
+    rpc ListCategories(ListCategoriesRequest) returns (ListCategoriesResponse) {
+        option (google.api.http) = {
+            put: "/v1/book/categories",
+            body: "*"
+        };
+    }
+
+    rpc GetBooksByCategory(GetBooksByCategoryRequest) returns (GetBooksByCategoryResponse) {
+        option (google.api.http) = {
+            put: "/v1/book/bookbycategory",
+            body: "*"
+        };
+    }
+    rpc GetBooksByUserId(ListAllBooksByCustomerIdRequest) returns (ListAllBooksByCustomerIdResponse)
+    {
+        option (google.api.http) = {
+            get: "/v1/book/userId"
+        };
+    }
+
 }
 
 
@@ -57,12 +84,35 @@ message ReadBookResponse
     bool availability = 6;
     string description = 7;
     int32 CurrentOwnerId  = 8;
+    string ImageUrl  = 9;
+    
+}
+
+message GetBookByTitleRequest
+{
+    int32 Id = 1;
+    string title = 2;
+}
+
+message GetBookByTitleResponse
+{
+    repeated ReadBookResponse book = 1;
     
 }
 
 message GetAllBookRequest { }
 
 message GetAllBookResponse
+{
+    repeated ReadBookResponse book = 1;
+}
+
+message GetBooksByCategoryRequest 
+{
+    string category = 1;
+}
+
+message GetBooksByCategoryResponse
 {
     repeated ReadBookResponse book = 1;
 }
@@ -89,3 +139,20 @@ message ReturnBookResponse
     int32 id = 1;
 }
     
+message ListCategoriesRequest
+{
+}
+
+message ListCategoriesResponse
+{
+    repeated string category = 1;
+
+}
+message ListAllBooksByCustomerIdRequest
+{
+    int32 userId =1;
+}
+message ListAllBooksByCustomerIdResponse
+{
+    repeated ReadBookResponse book = 1;
+}

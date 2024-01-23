@@ -1,15 +1,36 @@
-﻿using System;
+﻿using Grpc.Net.Client.Web;
+using Grpc.Net.Client;
+using LibraryApp.Model;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Windows.Input;
+using Grpc.Net.Client;
+using Grpc.Net.Client.Web;
 using Xamarin.Forms;
-using LibraryApp.Model;
-using System.Threading.Tasks;
+using LibraryGrpc;
+using static LibraryGrpc.CustomerIt;
+using System;
+using System.Collections.Generic;
 
 namespace LibraryApp.ViewModel
 {
+    public class BookTitleComparer : IEqualityComparer<Book>
+    {
+        public bool Equals(Book x, Book y)
+        {
+            return x.Title == y.Title;
+        }
+
+        public int GetHashCode(Book obj)
+        {
+            return obj.Title.GetHashCode();
+        }
+    }
     public class SearchClass
     {
+        private readonly GrpcChannel channel;
+
         private readonly string[] BookTitles = new[] {
                 "The Catcher in the Rye",
                 "To Kill a Mockingbird",
@@ -60,57 +81,58 @@ namespace LibraryApp.ViewModel
         }
         public SearchClass()
         {
-            OnTextChange = new Command(() => TextChanged(SearchText));
-            Books = new ObservableCollection<Book>();
-            bookdisplayed = new ObservableCollection<Book>();
-            for (int i = 0; i < BookTitles.Length; i++)
+            channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions
             {
-                Book book = new Book
+                HttpHandler = new GrpcWebHandler(new HttpClientHandler())
+            });
+            var bookClient = new BookIt.BookItClient(channel);
+            var bookRequest = new GetAllBookRequest { };
+            var bookResponse = bookClient.ListBook(bookRequest);
+            Books = new ObservableCollection<Book>();
+            OnTextChange = new Command(() => TextChanged(SearchText));
+            bookdisplayed = new ObservableCollection<Book>();
+            foreach (var bookElem in bookResponse.Book)
+            {
+                if (bookElem.Availability)
                 {
-                    BookId = i + 1,
-                    Title = BookTitles[i],
-                    Author = "Adam Jan Czubak",
-                    Genre = "Fiction",
-                    Rating = 4.7f,
-                    Availability = true,
-                    BookDescription = "Description of the bookxx xxxxxodosfjsi  fjisaifijsifisjaifs  aifjasjifasifia  jiaifjiasi  jfaif  jis fs fsafffa fsf aa ff.",
-                    CurrentOwnerId = null,
-                    ImageUrl = "test2.png"
-                };
+                    Book book = new Book
+                    {
+                        BookId = bookElem.Id,
+                        Title = bookElem.Title,
+                        Author = bookElem.Author,
+                        Genre = bookElem.Genre,
+                        Rating = bookElem.Rating,
+                        Availability = bookElem.Availability,
+                        BookDescription = bookElem.Description,
+                        CurrentOwnerId = bookElem.CurrentOwnerId,
+                        ImageUrl = bookElem.ImageUrl
+                    };
+                    Books.Add(book);
+                    bookdisplayed.Add(book);
 
-                Books.Add(book);
-                bookdisplayed.Add(book);
+                }
+
             }
+            bookdisplayed = new ObservableCollection<Book>(Books.Distinct(new BookTitleComparer()));
+            Books = new ObservableCollection<Book>(Books.Distinct(new BookTitleComparer()));
+
+
+
         }
         void TextChanged(string searchTerm)
         {
-
+            bookdisplayed.Clear();
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 searchTerm = string.Empty;
             }
             searchTerm = searchTerm.ToLowerInvariant();
-            var filteredItems = BookTitles.Where(value =>
-             value.ToLowerInvariant().Contains(searchTerm)).ToList();
-            
-            foreach (var value in BookTitles)
-            {
-                if(!filteredItems.Contains(value))
-                {
-                    var booksToRemove = Books.Where(book => book.Title == value).ToList();
-                    foreach (var bookToRemove in booksToRemove)
-                    {
-                        bookdisplayed.Remove(bookToRemove);
-                    }
-                }
-                foreach (var org_book in Books)
-                {
-                    if (filteredItems.Contains(org_book.Title) && !bookdisplayed.Any(book => org_book.BookId == book.BookId))
-                    {
-                        bookdisplayed.Add(org_book);
-                    }
-                }   
+            var filteredItems = Books.Where(book =>
+            book.Title.ToLowerInvariant().Contains(searchTerm)).ToList();
 
+            foreach (var book in filteredItems)
+            {
+                bookdisplayed.Add(book);
             }
         }
     }

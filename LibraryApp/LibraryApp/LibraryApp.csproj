@@ -12,10 +12,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+	<Protobuf Include="Protos\book.proto" GrpcServices="Client" />
+	<Protobuf Include="Protos\auth.proto" GrpcServices="Client" />
+	<Protobuf Include="Protos\customer.proto" GrpcServices="Client" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.13.0" />
     <PackageReference Include="Google.Protobuf" Version="3.25.2" />
     <PackageReference Include="Grpc.Net.Client" Version="2.60.0" />
     <PackageReference Include="Grpc.Tools" Version="2.60.0">

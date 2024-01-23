@@ -9,11 +9,12 @@ package authit;
 
 service AuthIt {
 
-    rpc AuthUser(LogInRequest) returns (LogInResponse) {
+    rpc LogInUser(LogInRequest) returns (LogInResponse) {
         option (google.api.http) = {
-            get: "/v1/auth/{email}"
+            get: "/v1/auth/{email}/{password}"
         };
     }
+
 
     rpc RegisterUser(RegisterRequest) returns (RegisterResponse) {
         option (google.api.http) = {
@@ -28,8 +29,11 @@ message LogInRequest {
 }
 
 message LogInResponse {
-    string status = 1;
+    string Message = 1;
+    bool isSuccess = 2;
 }
+
+
 
 message RegisterRequest {
     string email = 1;
