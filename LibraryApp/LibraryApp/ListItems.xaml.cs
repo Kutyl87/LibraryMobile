@@ -7,28 +7,18 @@ using LibraryGrpc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Grpc.Net.Client;
-
+using System.Net.Http;
+using Grpc.Net.Client.Web;
 namespace LibraryApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListItems : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
 
         public ListItems()
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-            MyListView.ItemsSource = Items;
         }
         /*static async Task Main()
         {
@@ -72,39 +62,50 @@ namespace LibraryApp
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var serverAddress = "localhost";
-            var serverPort = 7145;
-            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+            //        var serverAddress = "localhost";
+            //        var serverPort = 7145;
+            //        //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-            // Create a channel to the gRPC server
-            var channel = GrpcChannel.ForAddress($"https://10.0.2.2:7145");
-            var greeterClient = new Greeter.GreeterClient(channel);
+            //        // Create a channel to the gRPC server
+            //        var channel = GrpcChannel.ForAddress("https://192.168.0.171:7145", new GrpcChannelOptions
+            //        {
+            //            HttpHandler = new GrpcWebHandler(new HttpClientHandler())
+            //        });
 
-            // Create a request message
-            var request = new HelloRequest { Name = "John" };
+            //        var client = new Greeter.GreeterClient(channel);
+            //        var greeterClient = new Greeter.GreeterClient(channel);
 
-            var mes = "dd";
+            //        // Create a request message
+            //        var request = new HelloRequest { Name = "John" };
 
-            try
-            {
-                // Call the SayHello method synchronously
+            //        var mes = "dd";
 
-                var response = greeterClient.SayHello(request);
-                mes = $"Received greeting: {response.Message}";
-                Console.WriteLine($"Received greeting: {response.Message}");
-            }
-            catch (Exception ex)
-            {
-                mes = $"Error calling SayHello: {ex.Message}";
-                Console.WriteLine($"Error calling SayHello: {ex.Message}");
-            }
-            if (e.Item == null)
-                return;
+            //        try
+            //        {
+            //            // Call the SayHello method synchronously
 
-            await DisplayAlert($"Received greeting: {mes}", "An item was tapped.", "OK");
+            //            var response = greeterClient.SayHello(request);
+            //            mes = $"Received greeting: {response.Message}";
+            //            Console.WriteLine($"Received greeting: {response.Message}");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            mes = $"Error calling SayHello: {ex.Message}";
+            //            Console.WriteLine($"Error calling SayHello: {ex.Message}");
+            //        }
+            //        if (e.Item == null)
+            //            return;
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            //        await DisplayAlert($"Received greeting: {mes}", "An item was tapped.", "OK");
+
+            //        //Deselect Item
+            //        ((ListView)sender).SelectedItem = null;
+            //    }
+            //}
+        }
+
+        void SearchBar_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
         }
     }
 }

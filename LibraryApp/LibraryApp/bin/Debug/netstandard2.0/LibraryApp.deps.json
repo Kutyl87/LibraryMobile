@@ -11,8 +11,11 @@
         "dependencies": {
           "Google.Protobuf": "3.25.2",
           "Grpc.Net.Client": "2.60.0",
+          "Grpc.Net.Client.Web": "2.60.0",
           "Grpc.Tools": "2.60.0",
+          "MintPlayer.Xaml.EventToCommand": "1.0.2",
           "NETStandard.Library": "2.0.3",
+          "Xamarin.CommunityToolkit": "1.3.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
@@ -56,6 +59,17 @@
           }
         }
       },
+      "Grpc.Net.Client.Web/2.60.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Grpc.Net.Client.Web.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.60.0.0"
+          }
+        }
+      },
       "Grpc.Net.Common/2.60.0": {
         "dependencies": {
           "Grpc.Core.Api": "2.60.0"
@@ -81,6 +95,17 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "MintPlayer.Xaml.EventToCommand/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MintPlayer.Xaml.EventToCommand.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -127,11 +152,54 @@
           }
         }
       },
+      "System.Reflection.Emit.ILGeneration/4.7.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.7.0": {
+        "dependencies": {
+          "System.Reflection.Emit.ILGeneration": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Reflection.Emit.Lightweight.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "runtime": {
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.4": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "assemblyVersion": "4.2.0.1",
+            "fileVersion": "4.6.28619.1"
+          }
+        }
+      },
+      "Xamarin.CommunityToolkit/1.3.2": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.7.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.CommunityToolkit.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -191,6 +259,13 @@
       "path": "grpc.net.client/2.60.0",
       "hashPath": "grpc.net.client.2.60.0.nupkg.sha512"
     },
+    "Grpc.Net.Client.Web/2.60.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qECg3puccOeVE/KIpWfQGmj8N5vVELE63h2jzdsooY5rYIHDczMZaNRqWNSVhwhLyO/tes0TjNzzH1n4Uo0fSQ==",
+      "path": "grpc.net.client.web/2.60.0",
+      "hashPath": "grpc.net.client.web.2.60.0.nupkg.sha512"
+    },
     "Grpc.Net.Common/2.60.0": {
       "type": "package",
       "serviceable": true,
@@ -218,6 +293,13 @@
       "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "MintPlayer.Xaml.EventToCommand/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lz7vH4CT36EsUwzoAPlj8Tl6BGCrWR0FMKkphrmu3yiNcSnCy46skzm5TLmrh4IYwQOpRM3MwwiMSjLv224JLA==",
+      "path": "mintplayer.xaml.eventtocommand/1.0.2",
+      "hashPath": "mintplayer.xaml.eventtocommand.1.0.2.nupkg.sha512"
     },
     "NETStandard.Library/2.0.3": {
       "type": "package",
@@ -254,12 +336,40 @@
       "path": "system.numerics.vectors/4.5.0",
       "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     },
+    "System.Reflection.Emit.ILGeneration/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
+      "path": "system.reflection.emit.ilgeneration/4.7.0",
+      "hashPath": "system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.Lightweight/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
+    },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    },
+    "Xamarin.CommunityToolkit/1.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Sqkdzm3VX/XKAZ0RhJ6vD0SnKOso/rkQBtlEwRFjjeG+TeUwF3Lqu7IcK6/TLUHjWiclX3+piSmTg/FIt1twuw==",
+      "path": "xamarin.communitytoolkit/1.3.2",
+      "hashPath": "xamarin.communitytoolkit.1.3.2.nupkg.sha512"
     },
     "Xamarin.Essentials/1.7.0": {
       "type": "package",
