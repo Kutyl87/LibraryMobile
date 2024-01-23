@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LibraryApp.MainPage"
              xmlns:vm="clr-namespace:LibraryApp.ViewModel"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.BindingContext>
         <vm:MainPage x:Name="vm">
         </vm:MainPage>
