@@ -22,14 +22,17 @@
                 </SearchBar>
             </StackLayout>
         </Frame>
-    <CollectionView ItemsSource="{Binding Books}">
+    <CollectionView x:Name="BookCollection" ItemsSource="{Binding bookdisplayed}" SelectionMode="Single" SelectionChanged="OnItemSelected">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid>
                     <Frame CornerRadius="10" HasShadow="True" BackgroundColor="WhiteSmoke">
                         <StackLayout Orientation="Horizontal">
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnClicked}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>-->
                             <Image Source="search.png" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"/>
-                            <Label VerticalOptions="Center" Text="{Binding .}" FontSize="Medium" TextColor="Black"></Label>
+                            <Label VerticalOptions="Center" Text="{Binding Title}" FontSize="Medium" TextColor="Black"></Label>
                         </StackLayout>
                     </Frame>
                 </Grid>

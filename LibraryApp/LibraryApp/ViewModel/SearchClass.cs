@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using LibraryApp.Model;
+using System.Threading.Tasks;
 
 namespace LibraryApp.ViewModel
 {
@@ -39,8 +41,11 @@ namespace LibraryApp.ViewModel
                 "Moby-Dick",
                 "Alice's Adventures in Wonderland"
             };
+
         public ICommand OnTextChange { get; }
-        public ObservableCollection<string> Books { get; set; }
+        //public ICommand OnItemClicked { get; }
+        public ObservableCollection<Book> Books { get; set; }
+        public ObservableCollection<Book> bookdisplayed { get; set; }
         private string searchText;
         public string SearchText
         {
@@ -56,11 +61,30 @@ namespace LibraryApp.ViewModel
         public SearchClass()
         {
             OnTextChange = new Command(() => TextChanged(SearchText));
-            Books = new ObservableCollection<string>(BookTitles);
-          
+            Books = new ObservableCollection<Book>();
+            bookdisplayed = new ObservableCollection<Book>();
+            for (int i = 0; i < BookTitles.Length; i++)
+            {
+                Book book = new Book
+                {
+                    BookId = i + 1,
+                    Title = BookTitles[i],
+                    Author = "Unknown",
+                    Genre = "Fiction",
+                    Rating = 0.0f,
+                    Availability = true,
+                    BookDescription = "Description of the book.",
+                    CurrentOwnerId = null,
+                    ImageUrl = "ic_launcher.png"
+                };
+
+                Books.Add(book);
+                bookdisplayed.Add(book);
+            }
         }
         void TextChanged(string searchTerm)
         {
+
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 searchTerm = string.Empty;
@@ -68,18 +92,27 @@ namespace LibraryApp.ViewModel
             searchTerm = searchTerm.ToLowerInvariant();
             var filteredItems = BookTitles.Where(value =>
              value.ToLowerInvariant().Contains(searchTerm)).ToList();
+            
             foreach (var value in BookTitles)
             {
                 if(!filteredItems.Contains(value))
                 {
-                    Books.Remove(value);
+                    var booksToRemove = Books.Where(book => book.Title == value).ToList();
+                    foreach (var bookToRemove in booksToRemove)
+                    {
+                        bookdisplayed.Remove(bookToRemove);
+                    }
                 }
-                else if (!Books.Contains(value))
+                foreach (var org_book in Books)
                 {
-                    Books.Add(value);
-                }
+                    if (filteredItems.Contains(org_book.Title) && !bookdisplayed.Any(book => org_book.BookId == book.BookId))
+                    {
+                        bookdisplayed.Add(org_book);
+                    }
+                }   
+
             }
         }
-	}
+    }
 }
 

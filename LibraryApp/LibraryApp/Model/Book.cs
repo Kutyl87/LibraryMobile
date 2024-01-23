@@ -20,5 +20,9 @@ namespace LibraryApp.Model
 
         public string ImageUrl { get; set; }
 
+        //public bool Equals(Book other)
+        //{
+        //    return BookId == other.BookId;
+        //}
     }
 }

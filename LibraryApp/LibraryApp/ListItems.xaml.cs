@@ -66,46 +66,45 @@ namespace LibraryApp
             //        var serverPort = 7145;
             //        //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-            //        // Create a channel to the gRPC server
-            //        var channel = GrpcChannel.ForAddress("https://192.168.0.171:7145", new GrpcChannelOptions
-            //        {
-            //            HttpHandler = new GrpcWebHandler(new HttpClientHandler())
-            //        });
+            // Create a channel to the gRPC server
+            var channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions
+                    {
+                HttpHandler = new GrpcWebHandler(new HttpClientHandler())
+                    });
 
-            //        var client = new Greeter.GreeterClient(channel);
-            //        var greeterClient = new Greeter.GreeterClient(channel);
+            var client = new Greeter.GreeterClient(channel);
+            var greeterClient = new Greeter.GreeterClient(channel);
 
-            //        // Create a request message
-            //        var request = new HelloRequest { Name = "John" };
+            // Create a request message
+            var request = new HelloRequest { Name = "John" };
 
-            //        var mes = "dd";
+            var mes = "dd";
 
-            //        try
-            //        {
-            //            // Call the SayHello method synchronously
+            try
+            {
+                // Call the SayHello method synchronously
 
-            //            var response = greeterClient.SayHello(request);
-            //            mes = $"Received greeting: {response.Message}";
-            //            Console.WriteLine($"Received greeting: {response.Message}");
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            mes = $"Error calling SayHello: {ex.Message}";
-            //            Console.WriteLine($"Error calling SayHello: {ex.Message}");
-            //        }
-            //        if (e.Item == null)
-            //            return;
+                var response = greeterClient.SayHello(request);
+                mes = $"Received greeting: {response.Message}";
+                Console.WriteLine($"Received greeting: {response.Message}");
+            }
+            catch (Exception ex)
+            {
+                mes = $"Error calling SayHello: {ex.Message}";
+                Console.WriteLine($"Error calling SayHello: {ex.Message}");
+            }
+            if (e.Item == null)
+                return;
 
-            //        await DisplayAlert($"Received greeting: {mes}", "An item was tapped.", "OK");
+            await DisplayAlert($"Received greeting: {mes}", "An item was tapped.", "OK");
 
-            //        //Deselect Item
-            //        ((ListView)sender).SelectedItem = null;
-            //    }
-            //}
-        }
-
-        void SearchBar_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
-        {
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
+
+    //    void SearchBar_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+    //    {
+    //    }
+    //}
