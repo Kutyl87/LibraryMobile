@@ -20,14 +20,14 @@
                     <StackLayout HorizontalOptions="Center">
                     <Label Text="Sign In" TextColor="Blue" FontSize="20" HorizontalTextAlignment="Center"></Label>
                     <Frame CornerRadius="50" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="60" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Email" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Email}" HorizontalTextAlignment="Start" Placeholder="Email" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
                     <Frame CornerRadius="50" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="60" WidthRequest="340" Margin="0, 0, 0 ,0" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Password" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Password}" HorizontalTextAlignment="Start" Placeholder="Password" IsPassword="True" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
