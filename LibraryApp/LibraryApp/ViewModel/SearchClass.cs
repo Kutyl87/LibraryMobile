@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Input;
-using Grpc.Net.Client;
-using Grpc.Net.Client.Web;
 using Xamarin.Forms;
 using LibraryGrpc;
 using static LibraryGrpc.CustomerIt;
@@ -30,38 +28,6 @@ namespace LibraryApp.ViewModel
     public class SearchClass
     {
         private readonly GrpcChannel channel;
-
-        private readonly string[] BookTitles = new[] {
-                "The Catcher in the Rye",
-                "To Kill a Mockingbird",
-                "1984",
-                "Pride and Prejudice",
-                "The Great Gatsby",
-                "Harry Potter and the Sorcerer's Stone",
-                "The Hobbit",
-                "The Da Vinci Code",
-                "The Lord of the Rings",
-                "The Hitchhiker's Guide to the Galaxy",
-                "The Shining",
-                "The Hunger Games",
-                "The Chronicles of Narnia",
-                "The Godfather",
-                "The Girl with the Dragon Tattoo",
-                "Brave New World",
-                "Animal Farm",
-                "The Alchemist",
-                "One Hundred Years of Solitude",
-                "The Road",
-                "Frankenstein",
-                "Dracula",
-                "The Picture of Dorian Gray",
-                "Wuthering Heights",
-                "Jane Eyre",
-                "Sense and Sensibility",
-                "The Color Purple",
-                "Moby-Dick",
-                "Alice's Adventures in Wonderland"
-            };
 
         public ICommand OnTextChange { get; }
         public ICommand GoToProfile => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new ProfilePage()));
