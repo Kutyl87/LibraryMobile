@@ -6,8 +6,8 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
     <ContentPage.BindingContext>
-        <vm:MainPage x:Name="vm">
-        </vm:MainPage>
+        <vm:MainPageClass x:Name="vm">
+        </vm:MainPageClass>
 
     </ContentPage.BindingContext>
    <Grid>
