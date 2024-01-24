@@ -15,7 +15,7 @@
 	<Protobuf Include="Protos\book.proto" GrpcServices="Client" />
 	<Protobuf Include="Protos\auth.proto" GrpcServices="Client" />
 	<Protobuf Include="Protos\customer.proto" GrpcServices="Client" />
-	  <Protobuf Include="Protos\order.proto" GrpcServices="Client" />
+	<Protobuf Include="Protos\order.proto" GrpcServices="Client" />
   </ItemGroup>
 
 

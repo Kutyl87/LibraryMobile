@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Net.Http;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace LibraryApp.ViewModel
 {
@@ -73,7 +74,6 @@ namespace LibraryApp.ViewModel
 
         public void OnSubmit()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new ListItems());
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions
@@ -88,11 +88,13 @@ namespace LibraryApp.ViewModel
 
                 if (signInResponse.IsSuccess)
                 {
+                    SecureStorage.SetAsync("userId", signInResponse.CustomerId.ToString());
                     Application.Current.MainPage.Navigation.PushAsync(new ListItems());
                 }
                 else
                 {
                     MessageSignIn = signInResponse.Message;
+                    
                 }
             }
             else

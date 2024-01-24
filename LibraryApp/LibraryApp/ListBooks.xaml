@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:vm="clr-namespace:LibraryApp.ViewModel"
-             NavigationPage.HasBackButton="False"
              x:Class="LibraryApp.ListBooks">
 
     <ContentPage.BindingContext>
@@ -15,15 +14,6 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <Frame CornerRadius="30" Padding="5" HasShadow="True" WidthRequest="100" HeightRequest="60">
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <SearchBar Placeholder="Wyszukaxxxxxj..." Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}">
-                    <SearchBar.Behaviors>
-                        <xct:EventToCommandBehavior EventName="Focused" Command="{Binding OnFocus}"/>
-                    </SearchBar.Behaviors>
-                </SearchBar>
-            </StackLayout>
-        </Frame>
 
         <ListView x:Name="ListCategories"
                   ItemsSource="{Binding ListBooksByCategory}"

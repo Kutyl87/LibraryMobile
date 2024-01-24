@@ -6,6 +6,8 @@ using Grpc.Net.Client.Web;
 using LibraryGrpc;
 using System.Net.Http;
 using LibraryApp.Model;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LibraryApp.ViewModel
 {
@@ -30,21 +32,26 @@ namespace LibraryApp.ViewModel
   
             foreach (var bookElem in listBookResponse.Book)
             {
-                Book book = new Book
+                if(bookElem.Availability)
                 {
-                    BookId = bookElem.Id,
-                    Title = bookElem.Title,
-                    Author = bookElem.Author,
-                    Genre = bookElem.Genre,
-                    Rating = bookElem.Rating,
-                    Availability = bookElem.Availability,
-                    BookDescription = bookElem.Description,
-                    CurrentOwnerId = bookElem.CurrentOwnerId,
-                    ImageUrl = bookElem.ImageUrl
-                };
-                ListBooksByCategory.Add(book);
+                    Book book = new Book
+                    {
+                        BookId = bookElem.Id,
+                        Title = bookElem.Title,
+                        Author = bookElem.Author,
+                        Genre = bookElem.Genre,
+                        Rating = bookElem.Rating,
+                        Availability = bookElem.Availability,
+                        BookDescription = bookElem.Description,
+                        CurrentOwnerId = bookElem.CurrentOwnerId,
+                        ImageUrl = bookElem.ImageUrl
+                    };
+                    ListBooksByCategory.Add(book);
+                }
+                
             }
-       
+            ListBooksByCategory = new ObservableCollection<Book>(ListBooksByCategory.Distinct(new BookTitleComparer()));
+
         }
 
     }

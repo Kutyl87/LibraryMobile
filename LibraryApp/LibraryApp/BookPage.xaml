@@ -34,7 +34,7 @@
             </StackLayout>
             </StackLayout>
          <StackLayout Grid.Row="2">
-         <Button Command="{Binding Order}" Text="Order" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="50" Margin="0, 0, 0, 10"   BorderColor="Purple" BorderWidth="1.3" TextColor="White" BackgroundColor="MediumPurple"></Button>
+         <Button Clicked="OnButtonClicked" Text="Order" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="50" Margin="0, 0, 0, 10"   BorderColor="Purple" BorderWidth="1.3" TextColor="White" BackgroundColor="MediumPurple"></Button>
         </StackLayout>  
     </Grid>
     </ContentPage.Content>
