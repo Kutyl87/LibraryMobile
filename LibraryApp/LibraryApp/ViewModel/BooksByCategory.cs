@@ -5,13 +5,14 @@ using Xamarin.Forms;
 using Grpc.Net.Client.Web;
 using LibraryGrpc;
 using System.Net.Http;
+using LibraryApp.Model;
 
 namespace LibraryApp.ViewModel
 {
     public class BooksByCategory
     {
         private readonly GrpcChannel channel;
-        public ObservableCollection<string> ListBooksByCategory { get; set; }
+        public ObservableCollection<Book> ListBooksByCategory { get; set; }
         public ICommand OnFocus => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SearchPage()));
         public ICommand GoToProfile => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new ProfilePage()));
         public BooksByCategory()
@@ -25,10 +26,23 @@ namespace LibraryApp.ViewModel
             var category = ListItems.SelectedCategory;
             var bookRequest = new GetBooksByCategoryRequest { Category = category };
             var listBookResponse = bookClient.GetBooksByCategory(bookRequest);
-            ListBooksByCategory = new ObservableCollection<string>();
-            foreach(var book in listBookResponse.Book)
+            ListBooksByCategory = new ObservableCollection<Book>();
+  
+            foreach (var bookElem in listBookResponse.Book)
             {
-                ListBooksByCategory.Add(book.Title);
+                Book book = new Book
+                {
+                    BookId = bookElem.Id,
+                    Title = bookElem.Title,
+                    Author = bookElem.Author,
+                    Genre = bookElem.Genre,
+                    Rating = bookElem.Rating,
+                    Availability = bookElem.Availability,
+                    BookDescription = bookElem.Description,
+                    CurrentOwnerId = bookElem.CurrentOwnerId,
+                    ImageUrl = bookElem.ImageUrl
+                };
+                ListBooksByCategory.Add(book);
             }
        
         }
