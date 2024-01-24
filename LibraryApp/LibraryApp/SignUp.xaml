@@ -57,6 +57,7 @@
                     <Button Command="{Binding Register}" x:Name="messageLabel" Text="Sign Up!" TextColor="White" BackgroundColor="MediumPurple" HeightRequest="60" WidthRequest="340"/>
                     </StackLayout>
                 </Frame>
+                <Label Text = "{Binding MessageSignIn}" TextColor = "Magenta" HorizontalTextAlignment = "Center" ></Label >
             </StackLayout>
 <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
     <Label Text="Already have account?" HorizontalTextAlignment="Center"></Label>
