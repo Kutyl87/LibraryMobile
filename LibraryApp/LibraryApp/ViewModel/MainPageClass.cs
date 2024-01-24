@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace LibraryApp.ViewModel
 {
-	public class MainPage: INotifyPropertyChanged
+	public class MainPageClass: INotifyPropertyChanged
 	{
 		public ICommand SignIn => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SignIn()));
         public ICommand SignUp => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SignUp()));
@@ -15,7 +15,7 @@ namespace LibraryApp.ViewModel
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
-		public MainPage()
+		public MainPageClass()
 		{
 		}
 	}
