@@ -14,7 +14,7 @@ namespace LibraryApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListItems : ContentPage
     {
-
+        public static string SelectedCategory { get; set; }
         public ListItems()
         {
             InitializeComponent();
@@ -62,56 +62,11 @@ namespace LibraryApp
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //        var serverAddress = "localhost";
-            //        var serverPort = 7145;
-            //        //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-
-            // Create a channel to the gRPC server
-            var channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions
-                    {
-                HttpHandler = new GrpcWebHandler(new HttpClientHandler())
-                    });
-
-            var client = new Greeter.GreeterClient(channel);
-            var bookClient = new BookIt.BookItClient(channel);
-            var greeterClient = new Greeter.GreeterClient(channel);
-            var authClient = new AuthIt.AuthItClient(channel);
-            var customerClient = new CustomerIt.CustomerItClient(channel);
-
-            // Create a request message
-            var request = new HelloRequest { Name = "John" };
-            var bookRequest = new ReadBookRequest { Id = 1 };
-            var authRequest = new LogInRequest { Email = "ffsfsfs@wp.pl", Password = "2222112.Wf" };
-            var customerRequest = new ReadCustomerRequest { Id = 1};
-
-            var mes = "dd";
-
-            try
-            {
-                // Call the SayHello method synchronously
-
-                /*                var response = bookClient.ReadBook(bookRequest);
-                                mes = $"Received greeting: {response.Genre}";
-                                Console.WriteLine($"Received greeting: {response}");*/
-                /*                var response = bookClient.ReadBook(bookRequest);
-                                mes = $"Received greeting: {response.Genre}";
-                                Console.WriteLine($"Received greeting: {response}");*/
-                /*var response = authClient.LogInUser(authRequest);*/
-                var response = customerClient.ReadCustomer(customerRequest);
-                mes = $"Received greeting: {response.Name}";
-                Console.WriteLine($"Received greeting: {response}");
-            }
-            catch (Exception ex)
-            {
-                mes = $"Error calling SayHello: {ex.Message}";
-                Console.WriteLine($"Error calling SayHello: {ex.Message}");
-            }
-            if (e.Item == null)
-                return;
-
-            await DisplayAlert($"Received greeting: {mes}", "An item was tapped.", "OK");
-
+            SelectedCategory = ((ListView)sender).SelectedItem.ToString();
             //Deselect Item
+                
+            
+            Application.Current.MainPage.Navigation.PushAsync(new ListBooks());
             ((ListView)sender).SelectedItem = null;
         }
     }

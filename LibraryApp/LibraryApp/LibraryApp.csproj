@@ -41,10 +41,12 @@
   <ItemGroup>
     <Folder Include="google\api\" />
     <Folder Include="Protos\" />
-    <Folder Include="ViewModel\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="ListBooks.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ListItems.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

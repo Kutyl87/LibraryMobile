@@ -12,7 +12,9 @@ namespace LibraryApp.ViewModel
     {
         private readonly GrpcChannel channel;
         public ObservableCollection<string> ListCategories { get; set; }
-        public ICommand OnFocus => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SearchPage()));
+
+
+    public ICommand OnFocus => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new SearchPage()));
         public ICommand GoToProfile => new Command(() => Application.Current.MainPage.Navigation.PushAsync(new ProfilePage()));
         public Categories()
         {

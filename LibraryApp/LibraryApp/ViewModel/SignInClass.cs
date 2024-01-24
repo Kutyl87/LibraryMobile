@@ -73,6 +73,7 @@ namespace LibraryApp.ViewModel
 
         public void OnSubmit()
         {
+            Application.Current.MainPage.Navigation.PushAsync(new ListItems());
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 channel = GrpcChannel.ForAddress("https://libraryappgrpc.azurewebsites.net", new GrpcChannelOptions

@@ -1,0 +1,53 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm="clr-namespace:LibraryApp.ViewModel"
+             NavigationPage.HasBackButton="False"
+             x:Class="LibraryApp.ListBooks">
+
+    <ContentPage.BindingContext>
+        <vm:BooksByCategory x:Name="vm">
+        </vm:BooksByCategory>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding GoToProfile}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Frame CornerRadius="30" Padding="5" HasShadow="True" WidthRequest="100" HeightRequest="60">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <SearchBar Placeholder="Wyszukaxxxxxj..." Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}">
+                    <SearchBar.Behaviors>
+                        <xct:EventToCommandBehavior EventName="Focused" Command="{Binding OnFocus}"/>
+                    </SearchBar.Behaviors>
+                </SearchBar>
+            </StackLayout>
+        </Frame>
+
+        <ListView x:Name="ListCategories"
+                  ItemsSource="{Binding ListBooksByCategory}"
+                  ItemTapped="Handle_ItemTapped"
+                  HasUnevenRows="True"
+                  SeparatorColor="Blue"
+                  SeparatorVisibility="None"
+                  IsPullToRefreshEnabled="True"
+                  RefreshControlColor="Blue"
+                  CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5">
+                            <Frame CornerRadius="10" HasShadow="True" BorderColor="MediumPurple" BackgroundColor="White" Margin="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="search.png" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"/>
+                                    <Label VerticalOptions="Center" Text="{Binding .}" FontSize="Medium" TextColor="Black"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
