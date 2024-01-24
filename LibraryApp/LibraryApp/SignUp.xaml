@@ -20,41 +20,41 @@
                     <StackLayout HorizontalOptions="Center">
                     <Label Text="Register" TextColor="Blue" FontSize="20" HorizontalTextAlignment="Center"></Label>
                     <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Name" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Name}" HorizontalTextAlignment="Start" Placeholder="Name" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
                     <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Surname" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Surname}" HorizontalTextAlignment="Start" Placeholder="Surname" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
                     <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Email" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Email}" HorizontalTextAlignment="Start" Placeholder="Email" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
                     <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Password" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding Password}" HorizontalTextAlignment="Start" Placeholder="Password" IsPassword="True" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
                     <Frame CornerRadius="7" BackgroundColor="WhiteSmoke" HasShadow="False" HeightRequest="50" WidthRequest="340" Margin="0, 0, 0 ,20" Padding="0">
-                        <Entry HorizontalTextAlignment="Start" Placeholder="Repeat Password" TextColor="Red" Margin="20, 0, 0, 0" >
+                        <Entry Text="{Binding RepeatPassword}" HorizontalTextAlignment="Start" Placeholder="Repeat Password" IsPassword="True" TextColor="Red" Margin="20, 0, 0, 0" >
                              <Entry.Effects>
                                  <effects:BorderLessEntry/>
                             </Entry.Effects>
                         </Entry>
                     </Frame>
-                    <Button x:Name="messageLabel" Text="Sign Up!" TextColor="White" BackgroundColor="MediumPurple" HeightRequest="60" WidthRequest="340"/>
+                    <Button Command="{Binding Register}" x:Name="messageLabel" Text="Sign Up!" TextColor="White" BackgroundColor="MediumPurple" HeightRequest="60" WidthRequest="340"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
