@@ -21,7 +21,7 @@ namespace LibraryApp
 			InitializeComponent ();
 			Title.Text = book.Title;
 			Author.Text = book.Author;
-            Img.Source = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/63fc5679081483.5cb7f1e0aa619.png";
+            Img.Source = book.ImageUrl;
             //Img.Source = "https://cdn11.bigcommerce.com/s-zg6cb2/images/stencil/2560w/products/1633/2251/Chronicles__74223.1626774641.jpg?c=2";
             Description.Text = book.BookDescription;
 			Rating.Text = book.Rating.ToString();
