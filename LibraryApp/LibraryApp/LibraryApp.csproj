@@ -45,11 +45,17 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="Order.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="ListBooks.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ListItems.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Order.xaml.cs" />
   </ItemGroup>
 </Project>

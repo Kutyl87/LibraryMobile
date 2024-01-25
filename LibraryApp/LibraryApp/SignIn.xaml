@@ -42,7 +42,7 @@
                         </StackLayout>
                         <Button Command="{Binding Login}" Text="Sign In" HeightRequest="60" WidthRequest="340" TextColor="White" BackgroundColor="MediumPurple" Margin="0,0,0,0"></Button>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Don't Have Account" TextColor = "Magenta" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,5,0,5"></Label>
+                            <Label Text="Don't Have Account?" TextColor = "Magenta" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,5,0,5"></Label>
                             <Label Text="{Binding PropertySignUp}" VerticalTextAlignment="Center"  TextColor="Magenta" FontSize="14">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding LabelTappedCommand}">

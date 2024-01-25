@@ -21,8 +21,9 @@ namespace LibraryApp
 			InitializeComponent ();
 			Title.Text = book.Title;
 			Author.Text = book.Author;
-			Img.Source = book.ImageUrl;
-			Description.Text = book.BookDescription;
+            Img.Source = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/63fc5679081483.5cb7f1e0aa619.png";
+            //Img.Source = "https://cdn11.bigcommerce.com/s-zg6cb2/images/stencil/2560w/products/1633/2251/Chronicles__74223.1626774641.jpg?c=2";
+            Description.Text = book.BookDescription;
 			Rating.Text = book.Rating.ToString();
 			Genre.Text = book.Genre;
             _book = book;
@@ -45,8 +46,8 @@ namespace LibraryApp
             var orderRequest = new CreateOrderRequest { OrderId = 1, BookId = _book.BookId, CustomerId = userId };
 
 
-            string result = await DisplayActionSheet($"Selected Book: {_book.Title}", "Cancel", null, "Zatwierdz");
-            if (result == "Zatwierdz")
+            string result = await DisplayActionSheet($"Selected Book: {_book.Title}", "Cancel", null, "Confirm");
+            if (result == "Confirm")
             {
                 var bookResponse = bookClient.UpdateBook(bookRequest);
                 var orderResponse = orderClient.CreateOrder(orderRequest);
