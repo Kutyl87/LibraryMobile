@@ -15,7 +15,7 @@
         <StackLayout>
         <Frame CornerRadius="30" Padding="5" HasShadow="True" WidthRequest="100" HeightRequest="60">
             <StackLayout VerticalOptions="CenterAndExpand">
-                <SearchBar Placeholder="Wyszukajxxxxx..." Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}">
+                <SearchBar Placeholder="Search" Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}">
                 <SearchBar.Behaviors>
                     <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding OnTextChange}"/>
                 </SearchBar.Behaviors>
